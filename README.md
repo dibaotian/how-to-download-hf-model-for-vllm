@@ -18,6 +18,8 @@ How to download the HF model and run it in vllm
 
     cd vllm
 
+    git submodule update --init --recursive
+
     DOCKER_BUILDKIT=1 docker build -f Dockerfile.rocm -t vllm-rocm .
 
 6   Run the vllm docker
