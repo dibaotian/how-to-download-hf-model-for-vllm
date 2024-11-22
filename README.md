@@ -37,18 +37,30 @@ How to download the HF model and run it in vllm
     bash
     
 
-
-7 run model
-
-    in the vllm docker, run the serve like
-
-    python -m vllm.entrypoints.openai.api_server --model /workspace/Qwen2.5-7B-Instruct --tensor-parallel-size 2
- 
-    python gradio_openai_chatbot_webserver.py --model /workspace/Qwen2.5-7B-Instruct
-
-
-8 test  
-
+7 test  
+    Out side the docker , in the same server
     #>curl http://localhost:8000/v1/models
     {"object":"list","data":[{"id":"/workspace/Qwen2.5-7B-Instruct","object":"model","created":1732268408,"owned_by":"vllm","root":"/workspace/Qwen2.5-7B-Instruct","parent":null,"max_model_len":32768,"permission":[{"id":"modelperm-0c316cdfead64a9599b824b66ab89f18","object":"model_permission","created":1732268408,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"or
+
+
+
+8 run model
+
+    In the vllm docker, run the serve like
+
+    #>python -m vllm.entrypoints.openai.api_server --model /workspace/Qwen2.5-7B-Instruct --tensor-parallel-size 2
+
+    open a new docker bash shell
+
+    #>docker exec -it <docker_container> /bin/bash
+ 
+    start a server
+
+    #>python gradio_openai_chatbot_webserver.py --host 0.0.0.0 --model /workspace/Qwen2.5-7B-Instruct
+
+9 in a remote server ,open a web and use 
+
+    http://<server_IP>:8001/
+
+![alt text](image.png)
 
