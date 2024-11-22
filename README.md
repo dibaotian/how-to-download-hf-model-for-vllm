@@ -10,14 +10,14 @@ How to download the HF model and run it in vllm
     
     https://huggingface.co/settings/tokens
 
-4   huggingface-cli download NousResearch/Meta-Llama-3-8B-Instruct --local-dir model/Meta-Llama-3-8B-Instruct
+4   huggingface-cli download Qwen/Qwen2.5-7B-Instruct --local-dir model/Qwen2.5-7B-Instruct
 
 
 4 run model
 
     in the vllm docker, run the serve like
 
-    python -m vllm.entrypoints.openai.api_server --model model/huggingface/Meta-Llama-3-8B-Instruct --tensor-parallel-size 2
+    python -m vllm.entrypoints.openai.api_server --model model/huggingface/Qwen2.5-7B-Instruct --tensor-parallel-size 2
  
-    python gradio_openai_chatbot_webserver.py --model model/huggingface/Meta-Llama-3-8B-Instruct
+    python gradio_openai_chatbot_webserver.py --model model/huggingface/Qwen2.5-7B-Instruct
 
